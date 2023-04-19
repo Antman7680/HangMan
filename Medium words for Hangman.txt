@@ -1,0 +1,16 @@
+Medium words for Hangman:
+invite
+format
+school
+laborer
+teacher
+housing
+sketch
+hotdog
+credit
+costume
+evening
+sunrise
+dragon
+church
+bubble
