@@ -1,4 +1,3 @@
-Hard Words for Hangman:
 decisive
 personal
 hospital
