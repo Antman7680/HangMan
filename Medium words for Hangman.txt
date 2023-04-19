@@ -1,4 +1,3 @@
-Medium words for Hangman:
 invite
 format
 school
