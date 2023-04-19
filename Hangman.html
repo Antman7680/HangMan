@@ -20,22 +20,35 @@
                 grid-area: main;
                 display: grid;
                 grid-template-areas: 
-                'image'
-                'word'
-                'letters';
-                border: black solid 2px;
+                'image word'
+                'image letters';
             }
             #image{
                 grid-area: image;
+            }
+            img{
+                float: right;
+                height: 450px;
+                width: 400px;
             }
             #word{
                 grid-area: word;  
             }
             #letters{
-                grid-area: letters; 
+                grid-area: letters;
             }
             footer{
                 grid-area: footer;
+                font-size: x-small;
+            }
+            button{
+                font-size: larger;
+                display: inline-block;
+                margin: 2px;
+                text-align: center;
+                background-color: lightyellow;
+                color: darkslategray;
+                border: 0.5px black solid;
             }
         </style>
     </head>
@@ -44,11 +57,48 @@
             <h1>Hangman</h1>
         </header>
         <main>
-            <div id="image"></div>
+            <div id="image"><img id="hangman-template" src="Hangman.png" /></div>
             <div id="word"></div>
-            <div id="letters"></div>
+            <div id="letters">
+                <div>
+                    <button>a</button>
+                    <button>b</button>
+                    <button>c</button>
+                    <button>d</button>
+                    <button>e</button>
+                    <button>f</button>
+                </div>
+                <div>
+                    <button>g</button>
+                    <button>h</button>
+                    <button>i</button>
+                    <button>j</button>
+                    <button>k</button>
+                    <button>l</button>
+                </div>
+                <div>
+                    <button>m</button>
+                    <button>n</button>
+                    <button>o</button>
+                    <button>p</button>
+                    <button>q</button>
+                    <button>r</button>
+                </div>
+                <div>
+                    <button>s</button>
+                    <button>t</button>
+                    <button>u</button>
+                    <button>v</button>
+                    <button>w</button>
+                    <button>x</button>
+                </div>
+                <div>
+                    <button>y</button>
+                    <button>z</button>
+                </div>
+            </div>
         </main>
-        <footer></footer>
+        <footer>Created by Gege and Anthony</footer>
         <script>
 
         </script>
