@@ -1,4 +1,3 @@
-Easy words for Hangman
 run
 fairy
 spite
