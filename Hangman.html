@@ -46,61 +46,60 @@
                 display: inline-block;
                 margin: 2px;
                 text-align: center;
-                background-color: lightyellow;
                 color: darkslategray;
                 border: 0.5px black solid;
             }
         </style>
     </head>
-    <body>
+    <body id="body">
         <header>
             <h1>Hangman</h1>
         </header>
         <main>
             <div id="image"><img id="hangman-template" src="Hangman.png" /></div>
-            <div id="word"></div>
+            <div id="word">
+                <span id="0">_</span>
+                <span id="1">_</span>
+                <span id="2">_</span>
+                <span id="3">_</span>
+                <span id="4">_</span>
+                <span id="5">_</span>
+            </div>
             <div id="letters">
-                <div>
-                    <button>a</button>
-                    <button>b</button>
-                    <button>c</button>
-                    <button>d</button>
-                    <button>e</button>
-                    <button>f</button>
-                </div>
-                <div>
-                    <button>g</button>
-                    <button>h</button>
-                    <button>i</button>
-                    <button>j</button>
-                    <button>k</button>
-                    <button>l</button>
-                </div>
-                <div>
-                    <button>m</button>
-                    <button>n</button>
-                    <button>o</button>
-                    <button>p</button>
-                    <button>q</button>
-                    <button>r</button>
-                </div>
-                <div>
-                    <button>s</button>
-                    <button>t</button>
-                    <button>u</button>
-                    <button>v</button>
-                    <button>w</button>
-                    <button>x</button>
-                </div>
-                <div>
-                    <button>y</button>
-                    <button>z</button>
-                </div>
+                <p id="testing"></p>
             </div>
         </main>
         <footer>Created by Gege and Anthony</footer>
         <script>
-
-        </script>
+            var words_list=["action","unfair","acquit","pierce","remark","normal","shadow","indoor","refuse","banish","quaint","ignite","volume","jockey",];
+            let word_gen = Math.floor(Math.random()*14);
+            var word = words_list[word_gen];
+            const word_array=word.split("");
+            var num_tries=6;
+            // const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",];
+            // while(num_tries>0||num_tries==0){
+                var body = document.getElementById("body");
+                body.addEventListener("keyup", (e) => {
+                    key = e.key;
+                    spell_check(key);
+                });
+                function spell_check(key){
+                    let anthony = false;
+                    for (let i=0; i < 6; i++) {
+                        if(key == word_array[i]){
+                            document.getElementById(i).innerHTML=(key)
+                            anthony=true;
+                        }
+                    }
+                    if(anthony==false){
+                        num_tries-=1
+                        console.log("Try again")
+                    }
+                    console.log(key)
+                }
+            // }
+            console.log(word);
+            console.log(word_array);
+         </script>
     </body>
 </html>
