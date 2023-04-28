@@ -34,9 +34,20 @@
             #word{
                 grid-area: word;  
             }
+            #letters{
+                grid-area: letters;
+            }
             footer{
                 grid-area: footer;
                 font-size: x-small;
+            }
+            button{
+                font-size: larger;
+                display: inline-block;
+                margin: 2px;
+                text-align: center;
+                color: darkslategray;
+                border: 0.5px black solid;
             }
         </style>
     </head>
@@ -45,7 +56,15 @@
             <h1>Hangman</h1>
         </header>
         <main id="main">
-            <div id="image"><img id="hangman-template" src="Hangman.png" /></div>
+            <div id="image">
+                <img id="wrong_1" src="hangman_1.png" />
+                <img id="wrong_2" src="hangman_2.png" />
+                <img id="wrong_3" src="hangman_3.png" />
+                <img id="wrong_4" src="hangman_4.png" />
+                <img id="wrong_5" src="hangman_5.png" />
+                <img id="wrong_6" src="hangman_6.png" />
+                <img id="wrong_7" src="hangman_7.png" />
+            </div>
             <div id="word">
                 <div>Number of tries: <span id ="tries"></span></div>
                 <span id="0">_</span>
