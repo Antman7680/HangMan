@@ -55,9 +55,10 @@
         <header>
             <h1>Hangman</h1>
         </header>
-        <main>
+        <main id="main">
             <div id="image"><img id="hangman-template" src="Hangman.png" /></div>
             <div id="word">
+                <div>Number of tries: <span id ="tries"></span></div>
                 <span id="0">_</span>
                 <span id="1">_</span>
                 <span id="2">_</span>
@@ -65,41 +66,42 @@
                 <span id="4">_</span>
                 <span id="5">_</span>
             </div>
-            <div id="letters">
-                <p id="testing"></p>
-            </div>
         </main>
         <footer>Created by Gege and Anthony</footer>
         <script>
-            var words_list=["action","unfair","acquit","pierce","remark","normal","shadow","indoor","refuse","banish","quaint","ignite","volume","jockey",];
-            let word_gen = Math.floor(Math.random()*14);
-            var word = words_list[word_gen];
+            var words_list=["action","unfair","acquit","pierce","remark","normal","shadow","indoor","refuse","banish","quaint","ignite","volume","jockey"];//This is a list but in js its called an array. This list holds 15 words and counts 0-14
+            let word_gen = Math.floor(Math.random()*14);//This right here generates a number between 0-14
+            var word = words_list[word_gen];//This pulls a word from the list using the number we generated.
+
             const word_array=word.split("");
             var num_tries=6;
-            // const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",];
-            // while(num_tries>0||num_tries==0){
-                var body = document.getElementById("body");
-                body.addEventListener("keyup", (e) => {
-                    key = e.key;
-                    spell_check(key);
-                });
-                function spell_check(key){
-                    let anthony = false;
-                    for (let i=0; i < 6; i++) {
-                        if(key == word_array[i]){
-                            document.getElementById(i).innerHTML=(key)
-                            anthony=true;
-                        }
-                    }
-                    if(anthony==false){
-                        num_tries-=1
-                        console.log("Try again")
-                    }
-                    console.log(key)
+            document.getElementById("tries").innerHTML=(num_tries);
+
+            var body = document.getElementById("body");
+            body.addEventListener("keyup", (e) => {
+                key = e.key.toLowerCase();
+                spell_check(key);
+            });
+
+            function spell_check(key){
+                if(num_tries==0){
+                    document.getElementById("main").innerHTML=("Sorry try again");
                 }
-            // }
+                let anthony = false;
+                for (let i=0; i < 6; i++) {
+                    if(key == word_array[i]){
+                        document.getElementById(i).innerHTML=(key);
+                        anthony=true;
+                    }
+                }
+                if(anthony==false){
+                    console.log("Try again");
+                    num_tries-=1;
+                    document.getElementById("tries").innerHTML=(num_tries);
+                }
+                console.log(key);
+            }
             console.log(word);
-            console.log(word_array);
          </script>
     </body>
 </html>
