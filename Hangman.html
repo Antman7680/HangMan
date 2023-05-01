@@ -15,23 +15,27 @@
             header{
                 grid-area: header;
                 text-align: center;
-                font-size: x-large;
+                font-size: larger;
+                margin: 0px;
+                padding: 0px;
             }
             main{
+                margin-top: 0px;
+                padding-top: 0px;
                 grid-area: main;
                 display: grid;
                 grid-template-areas: 
                 'image word'
                 'image word';
-                margin-bottom: 100px;
+                margin-bottom: 0px;
             }
             #image{
                 grid-template-areas: 'image';
             }
             .image{
                 grid-area: "image";
-                height: 500px;
-                width: 450px;
+                height: 450px;
+                width: 425px;
                 float: right;
                 padding-right: 25px;
             }
@@ -47,6 +51,9 @@
                 grid-area: footer;
                 font-size: x-small;
             }
+            button{
+                margin: 1.5%;
+            }
         </style>
     </head>
     <body id="body">
@@ -58,16 +65,25 @@
                 <img id="display-img" class="image" src='"hangman_1.png'/>
             </div>
             <div id="word">
-                <span class="word">
-                    <div>Number of tries: <span id ="tries"></span></div>
+                <div id="guess">
+                    <div>Correct guesses</div>
                     <span id="0" class="guess">_</span>
                     <span id="1" class="guess">_</span>
                     <span id="2" class="guess">_</span>
                     <span id="3" class="guess">_</span>
                     <span id="4" class="guess">_</span>
                     <span id="5" class="guess">_</span>
-                </span>
+                </div>
                 <div><a href="http://127.0.0.1:5500/Hangman.html"><button>Reset</button></a></div>
+                <div id="wrong_guess">
+                    <div>Wrong guesses</div>
+                    <span id="wg6" class="guess">_</span>
+                    <span id="wg5" class="guess">_</span>
+                    <span id="wg4" class="guess">_</span>
+                    <span id="wg3" class="guess">_</span>
+                    <span id="wg2" class="guess">_</span>
+                    <span id="wg1" class="guess">_</span>
+                </div>
             </div>
         </main>
         <footer>Created by Gege and Anthony</footer>
@@ -78,7 +94,6 @@
 
             const word_array=word.split("");//Splits word into a list 
             var num_tries=6;//Declares the amount of tries
-            document.getElementById("tries").innerHTML=(num_tries);//displays the number of tries the user has
 
             var body = document.getElementById("body");//Creates a var for the body 
             body.addEventListener("keyup", (e) => {//Creates an event listener that listens for when the user presses a key and it goes up
@@ -91,7 +106,7 @@
 
             function spell_check(key){//declares function with parameter key
                 if(num_tries==0){//if function
-                    document.getElementById("word").innerHTML=("Sorry try again the word was "+word);//prints the word and to try again once the user runs out of attempts
+                    document.getElementById("guess").innerHTML=("Sorry try again the word was "+word);//prints the word and to try again once the user runs out of attempts
                 }
                 let anthony = false;
                 for (let i=0; i < 6; i++) {
@@ -101,9 +116,9 @@
                     }
                 }
                 if(anthony==false){
+                    document.getElementById("wg"+num_tries).innerHTML=(key)
                     console.log("Try again");
                     num_tries-=1;
-                    document.getElementById("tries").innerHTML=(num_tries);
                 }
                 document.getElementById("display-img").setAttribute('src',image_list[num_tries])
                 console.log(key);
