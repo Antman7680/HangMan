@@ -8,6 +8,7 @@
                 display: grid;
                 grid-template-areas: 
                 'header'
+                'nav'
                 'main'
                 'footer';
                 color: midnightblue;
@@ -16,6 +17,13 @@
                 grid-area: header;
                 text-align: center;
                 font-size: larger;
+                margin: 0px;
+                padding: 0px;
+            }
+            nav{
+                grid-area: 'nav';
+                text-align: center;
+                font-size: large;
                 margin: 0px;
                 padding: 0px;
             }
@@ -31,6 +39,8 @@
             }
             #image{
                 grid-template-areas: 'image';
+                margin: 0px;
+                padding: 0px;
             }
             .image{
                 grid-area: "image";
@@ -46,13 +56,13 @@
                 padding-right: 75px;
                 font-size: large;
             }
+            button{
+                margin: 1.5%;
+            }
             footer{
                 margin-top: 75px;
                 grid-area: footer;
                 font-size: x-small;
-            }
-            button{
-                margin: 1.5%;
             }
         </style>
     </head>
@@ -60,6 +70,9 @@
         <header>
             <h1>Hangman</h1>
         </header>
+        <nav>
+            <h2>Topic: <span id="hint"></span></h2>
+        </nav>
         <main id="main">
             <div id="image">
                 <img id="display-img" class="image" src='"hangman_1.png'/>
@@ -67,32 +80,35 @@
             <div id="word">
                 <div id="guess">
                     <div>Correct guesses</div>
-                    <span id="0" class="guess">_</span>
-                    <span id="1" class="guess">_</span>
-                    <span id="2" class="guess">_</span>
-                    <span id="3" class="guess">_</span>
-                    <span id="4" class="guess">_</span>
-                    <span id="5" class="guess">_</span>
+                    <span id="0">_</span>
+                    <span id="1">_</span>
+                    <span id="2">_</span>
+                    <span id="3">_</span>
+                    <span id="4">_</span>
+                    <span id="5">_</span>
                 </div>
                 <div><a href="http://127.0.0.1:5500/Hangman.html"><button>Reset</button></a></div>
                 <div id="wrong_guess">
                     <div>Wrong guesses</div>
-                    <span id="wg6" class="guess">_</span>
-                    <span id="wg5" class="guess">_</span>
-                    <span id="wg4" class="guess">_</span>
-                    <span id="wg3" class="guess">_</span>
-                    <span id="wg2" class="guess">_</span>
-                    <span id="wg1" class="guess">_</span>
+                    <span id="wg6">_</span>
+                    <span id="wg5">_</span>
+                    <span id="wg4">_</span>
+                    <span id="wg3">_</span>
+                    <span id="wg2">_</span>
+                    <span id="wg1">_</span>
                 </div>
             </div>
         </main>
-        <footer>Created by Gege and Anthony</footer>
         <script>
-            var words_list=["action","unfair","acquit","pierce","remark","normal","shadow","indoor","refuse","banish","quaint","ignite","volume","jockey"];//This is a list but in js its called an array. This list holds 15 words and counts 0-14
-            let word_gen = Math.floor(Math.random()*14);//This right here generates a number between 0-14
-            var word = words_list[word_gen];//This pulls a word from the list using the number we generated.
+            var words_list=['keypad','potato','hawaii','nevada','soccer','tetris','cookie','banana','autumn','newark','queens','bronze','winter','batman','google','rabbit','turkey','mother','museum','cherry','degree','eleven','father','guitar','hockey','orange','monkey','keypad','potato','hawaii','nevada','soccer','tetris','cookie','banana','autumn','newark','queens','bronze','winter','batman','google','rabbit','turkey','mother','museum','cherry','degree','eleven','father','guitar','hockey','orange','monkey'];//This is a list but in js its called an array. This list holds 15 words and counts 0-14
+            var hint_list=['Technology','Veggie','U.S State','U.S State','Sports','Video Games','Sweets','Fruit','Season','City','New York Boroughs','Metal','Seasons','Super Hero','Technology','Animal','Animal','Care Taker','Place','Fruit','College','Stranger Things','Care Taker','Instrument','Sports','Fruit','Animal','Technology','Veggie','U.S State','U.S State','Sports','Video Games','Sweets','Fruit','Season','City','New York Boroughs','Metal','Seasons','Super Hero','Technology','Animal','Animal','Care Taker','Place','Fruit','College','Stranger Things','Care Taker','Instrument','Sports','Fruit','Animal']
 
+            let num_gen = Math.floor(Math.random()*(words_list.length));//This right here generates a number between 0-14
+            var word = words_list[num_gen];//This pulls a word from the list using the number we generated.
             const word_array=word.split("");//Splits word into a list 
+
+            document.getElementById('hint').innerHTML=(hint_list[num_gen])
+
             var num_tries=6;//Declares the amount of tries
 
             var body = document.getElementById("body");//Creates a var for the body 
@@ -108,14 +124,15 @@
                 if(num_tries==0){//if function
                     document.getElementById("guess").innerHTML=("Sorry try again the word was "+word);//prints the word and to try again once the user runs out of attempts
                 }
-                let anthony = false;
+                let correct_letter = false;
+
                 for (let i=0; i < 6; i++) {
                     if(key == word_array[i]){
                         document.getElementById(i).innerHTML=(key);
-                        anthony=true;
+                        correct_letter=true;
                     }
                 }
-                if(anthony==false){
+                if(correct_letter==false){
                     document.getElementById("wg"+num_tries).innerHTML=(key)
                     console.log("Try again");
                     num_tries-=1;
