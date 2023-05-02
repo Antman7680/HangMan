@@ -52,26 +52,32 @@
                 font-size: large;
             }
             #correct_guesses{
-                grid-template-areas: '1 2 3 4 5 6';
+                grid-template-areas: '1' '2' '3' '4' '5' '6';
                 text-align: center;
+                color: mediumaquamarine;
+            }
+            span{
+                color:blueviolet
+            }
+            #0{
+                grid-area: '1';
+                color: red;
             }
             #1{
-                grid-area: '1';
-            }
-            #2{
                 grid-area: '2';
             }
-            #3{
+            #2{
                 grid-area: '3';
             }
-            #4{
+            #3{
                 grid-area: '4';
             }
-            #5{
+            #4{
                 grid-area: '5';
             }
-            #6{
+            #5{
                 grid-area: '6';
+                color: aqua;
             }
             footer{
                 margin-top: 75px;
@@ -94,7 +100,9 @@
             <div id="word">
                 <div id="guess">
                     <div>Correct guesses</div>
-                    <div id="correct_guesses"></div>
+                    <div id="correct_guesses">
+
+                    </div>
                 </div>
                 <div><a href="http://127.0.0.1:5500/Hangman.html"><button>Reset</button></a></div>
                 <div id="wrong_guess">
@@ -118,11 +126,13 @@
 
             document.getElementById('hint').innerHTML=(hint_list[num_gen]);
 
+            let d=0
             for(let a=(word_array.length); a>0; a--){
                 const s = document.createElement("span");
                 const text = document.createTextNode(" _ ");
                 s.appendChild(text);
-                document.getElementById("correct_guesses").appendChild(s).setAttribute('id',(-(a)));
+                document.getElementById("correct_guesses").appendChild(s).setAttribute('id',d);
+                d+=1
 
             }
 
@@ -145,13 +155,14 @@
                 let correct_letter = false;
 
                 if(key == word_array[0]){
-                        document.getElementById(1).innerHTML=(key.toUpperCase());
+                        document.getElementById(0).innerHTML=(key.toUpperCase());
                         correct_letter=true;
                 }
                 for (let i=1; i <(word_array.length); i++) {
                      if(key == word_array[i]){
                         document.getElementById(i).innerHTML=(key);
                         correct_letter=true;
+                        console.log(i)
                     }
                 }
                 if(correct_letter==false){
@@ -163,7 +174,6 @@
                 console.log(key);
             }
             console.log(word);
-            console.log(word_array.length)
          </script>
     </body>
 </html>
