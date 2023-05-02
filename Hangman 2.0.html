@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hangman</title>
+        <style>
+            body{
+                display: grid;
+                grid-template-areas: 
+                'header'
+                'nav'
+                'main'
+                'footer';
+                color: midnightblue;
+            }
+            header{
+                grid-area: header;
+                text-align: center;
+                font-size: larger;
+                margin: 0px;
+                padding: 0px;
+            }
+            nav{
+                grid-area: 'nav';
+                text-align: center;
+                font-size: large;
+                margin: 0px;
+                padding: 0px;
+            }
+            main{
+                margin-top: 0px;
+                padding-top: 0px;
+                grid-area: main;
+                display: grid;
+                grid-template-areas: 
+                'image word'
+                'image word';
+                margin-bottom: 0px;
+            }
+            .image{
+                grid-area: "image";
+                height: 450px;
+                width: 425px;
+                float: right;
+                padding-right: 25px;
+            }
+            #word{
+                grid-area: word;  
+                padding-top: 150px;
+                text-align: center;
+                padding-right: 75px;
+                font-size: large;
+            }
+            #correct_guesses{
+                grid-template-areas: '1 2 3 4 5 6';
+                text-align: center;
+            }
+            #1{
+                grid-area: '1';
+            }
+            #2{
+                grid-area: '2';
+            }
+            #3{
+                grid-area: '3';
+            }
+            #4{
+                grid-area: '4';
+            }
+            #5{
+                grid-area: '5';
+            }
+            #6{
+                grid-area: '6';
+            }
+            footer{
+                margin-top: 75px;
+                grid-area: footer;
+                font-size: x-small;
+            }
+        </style>
+    </head>
+    <body id="body">
+        <header>
+            <h1>Hangman</h1>
+        </header>
+        <nav>
+            <h2>Topic: <span id="hint"></span></h2>
+        </nav>
+        <main id="main">
+            <div id="image">
+                <img id="display-img" class="image" src='"hangman_1.png'/>
+            </div>
+            <div id="word">
+                <div id="guess">
+                    <div>Correct guesses</div>
+                    <div id="correct_guesses"></div>
+                </div>
+                <div><a href="http://127.0.0.1:5500/Hangman.html"><button>Reset</button></a></div>
+                <div id="wrong_guess">
+                    <div>Wrong guesses</div>
+                    <span id="wg6">_</span>
+                    <span id="wg5">_</span>
+                    <span id="wg4">_</span>
+                    <span id="wg3">_</span>
+                    <span id="wg2">_</span>
+                    <span id="wg1">_</span>
+                </div>
+            </div>
+        </main>
+        <script>
+            var words_list=['zelda','puppy','apple','flash','texas','maine','pizza','summer','spring','potato','hawaii','nevada','soccer','tetris','cookie','banana','autumn','newark','bronze','copper','winter','batman','google','rabbit','turkey','mother','museum','cherry','degree','eleven','father','guitar','hockey','orange','monkey'];
+            var hint_list=['Video Games','Animal','Fruit','Super Hero','U.S State','U.S State','Food','Seasons','Seasons','Veggie','U.S State','U.S State','Sports','Video Games','Sweets','Fruit','Season','City','Metal','Metal','Seasons','Super Hero','Technology','Animal','Animal','Care Taker','Place','Fruit','College','Stranger Things','Care Taker','Instrument','Sports','Fruit','Animal'];
+
+            let num_gen = Math.floor(Math.random()*(words_list.length));//This right here generates a number between 0-14
+            var word = words_list[num_gen];//This pulls a word from the list using the number we generated.
+            const word_array=word.split("");//Splits word into a list 
+
+            document.getElementById('hint').innerHTML=(hint_list[num_gen]);
+
+            for(let a=(word_array.length); a>0; a--){
+                const s = document.createElement("span");
+                const text = document.createTextNode(" _ ");
+                s.appendChild(text);
+                document.getElementById("correct_guesses").appendChild(s).setAttribute('id',(-(a)));
+
+            }
+
+            var num_tries=6;
+
+            var body = document.getElementById("body");//Creates a var for the body 
+            body.addEventListener("keyup", (e) => {//Creates an event listener that listens for when the user presses a key and it goes up
+                key = e.key;
+                spell_check(key);//calls function when listener goes off
+            });
+
+            var image_list=['hangman_7.png','hangman_6.png','hangman_5.png','hangman_4.png','hangman_3.png','hangman_2.png','hangman_1.png'];//list of images
+            document.getElementById("display-img").setAttribute('src',(image_list[num_tries]));//prints image on screen
+
+            function spell_check(key){//declares function with parameter key
+
+                if(num_tries==0){//if function
+                    document.getElementById("guess").innerHTML=("Sorry try again the word was "+word);//prints the word and to try again once the user runs out of attempts
+                }
+                let correct_letter = false;
+
+                if(key == word_array[0]){
+                        document.getElementById(1).innerHTML=(key.toUpperCase());
+                        correct_letter=true;
+                }
+                for (let i=1; i <(word_array.length); i++) {
+                     if(key == word_array[i]){
+                        document.getElementById(i).innerHTML=(key);
+                        correct_letter=true;
+                    }
+                }
+                if(correct_letter==false){
+                    document.getElementById("wg"+num_tries).innerHTML=(key)
+                    console.log("Try again");
+                    num_tries-=1;
+                }
+                document.getElementById("display-img").setAttribute('src',image_list[num_tries])
+                console.log(key);
+            }
+            console.log(word);
+            console.log(word_array.length)
+         </script>
+    </body>
+</html>
