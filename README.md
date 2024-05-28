@@ -1,2 +1,2 @@
 # HangMan
-Anthony and Gege's version of Hangman.
+Anthony's version of Hangman.
