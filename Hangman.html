@@ -8,104 +8,29 @@
             img{
                 width: 30.5em;
                 height: 25em;
-                border: 0px;
-                visibility: hidden;
+                border:none;
             }
         </style>
     </head>
     <body id="body">
         <h1>HangMan</h1>
         <table>
-            <tr><td><p>Attempts: <span id="attempts"></span></p></td><td><button id="start" onclick="start_game()">Start</button></td></tr>
-            <tr><td><img id="display-img"></td><td><div id="guesses"></div></td></tr>
+            <tr><td><p>Attempts: <span id="attempts"></span></p></td><td><button id="start" onclick="display_game()">Start</button></td></tr>
+            <tr>
+                <td><img id="display-img"></td>
+                <td><div id="guesses"></div>
+                    <table>
+                        <tr><td><div id="topic"></div></td></tr>
+                        <tr><td><div id="correct_guesses"></div></td></tr>
+                        <tr><td><div id="wrong_guesses"></div></td></tr>
+                    </table>
+                </td>
+            </tr>
         </table>
 
-        <script>
-            var fruit_list=['apple','orange','mango','watermelon','cherry'];//List of fruits
-            var fruit_topic=['Fruit','Fruit','Fruit','Fruit','Fruit'];//List of topics
-            var fruit_hint=['The fruit is red','The fruit is named after a color','The fruit is commonly red and green','It is big and green','The fruit is red small and sweet'];//Hint for fruit generated
-
-            var super_hero_list=['the_flash','iron_man','spider-man','batman','super_man'];//Super hero list
-            var super_hero_topic=['DC Super Heros','Marvel Super Heros','Marvel Super Heros','DC Super Hero','DC Super Hero'];//Topic for super hero
-            var super_hero_hint=['He is very fast','I am ...','Friendly neighborhood','I am the vengeance! I am the Night! I am ...','The Last Son of Krypton'];//Hint for super hero generated
-
-            const words_list=fruit_list.concat(super_hero_list);//Combines the list
-            const topic_list =fruit_topic.concat(super_hero_topic);//Combines the topic list
-            const hint_list=fruit_hint.concat(super_hero_hint);//Combines the hint list
-
-            function start_game(){
-                let attempts= 6;
-                document.getElementById("attempts").innerHTML= String(attempts) ;
-
-                document.getElementById("display-img").style.visibility = "visible";
-                document.getElementById("display-img").setAttribute('src',('hangman_1.png'));
-                
-                let num_gen = Math.floor(Math.random()*(words_list.length));//This right here generates a number between 0-and length of the list
-                let word = words_list[num_gen];//This pulls a word from the list using the number we generated.
-                let word_array=(word.toUpperCase()).split("");
-                console.log(word);
-
-                function create_template(word_array){
-                    document.getElementById("guesses").innerHTML="";
-                    let id=0
-                    for(let i=(word_array.length); i>0; i--){
-                        if('_'==word_array[id]){
-                            const s = document.createElement("span");
-                            const text = document.createTextNode("_");
-                            s.appendChild(text);
-                            document.getElementById("guesses").appendChild(s).setAttribute('style','color:white');
-                            id+=1
-                        }
-                        else if('-'==word_array[id]){
-                            const s = document.createElement("span");
-                            const text = document.createTextNode("-");
-                            s.appendChild(text);
-                            document.getElementById("guesses").appendChild(s);
-                            id+=1
-                        }
-                        else{
-                            const s = document.createElement("span");
-                            const text = document.createTextNode(" _ ");
-                            s.appendChild(text);
-                            document.getElementById("guesses").appendChild(s).setAttribute('id',id);
-                            id+=1
-                        }
-                    }
-                }
-                create_template(word_array)
-                function spell_check(key){
-                    var keys_list=['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x,','c','v','b','n','m'];
-                    for(i=0; i<keys_list.length; i++){
-                        if(key==keys_list[i]){
-                            for(i=0;i<word_array.length;i++){
-                                if(key.toUpperCase()==word_array[i]){
-                                    if(i==0){
-                                    document.getElementById(i).innerHTML=key;
-                                    }
-                                    else{
-                                        document.getElementById(i).innerHTML=key.toLowerCase();
-                                    }
-                                }
-                            }
-                            console.log(key);
-                        }
-                    }
-                }
-                while(attempts>0){
-                    var body = document.getElementById("body");//Creates a var for the body 
-                    attempts-=1
-                    body.addEventListener("keyup", (e) => {//Creates an event listener that listens for when the user presses a key and it goes up
-                        key = e.key;
-                        if(key=='Enter'){
-                            console.log("You pressed enter");
-                        }
-                        spell_check(key)
-                    });
-                }
-            }
+        <script src="hangmanjs.js">
             // var image_list=['hangman_7.png','hangman_6.png','hangman_5.png','hangman_4.png','hangman_3.png','hangman_2.png','hangman_1.png'];//list of images
             // document.getElementById("display-img").setAttribute('src',(image_list[attempts]));//prints image on screen
-
         </script>
     </body>
 </html>
