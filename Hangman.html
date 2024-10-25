@@ -12,7 +12,8 @@
             border: none;
             visibility: hidden;
         }
-        #start{
+
+        #start {
             visibility: visible;
         }
     </style>
@@ -22,9 +23,14 @@
     <h1>HangMan</h1>
     <table>
         <tr>
-            <td><p>Attempts: <span id="attempts"></span></p></td>
+            <td>Longest Streak: <span id="streak"></span></td>
+            <td>
+                <p>Attempts: <span id="attempts"></span></p>
+            </td>
             <td><button id="start" onclick="display_game()">Play Game</button></td>
-            <td><div id="hint_display"></div></td>
+            <td>
+                <div id="hint_display"></div>
+            </td>
         </tr>
         <tr>
             <td><img id="display-img"></td>
