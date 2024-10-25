@@ -29,9 +29,16 @@ const topic_list = fruit_topic.concat(super_hero_topic, school_subject_topic, po
 const hint_list = fruit_hint.concat(super_hero_hint, school_subject_hint, popular_brands_hint, cartoon_hint, video_games_hint);//Combines the hint list
 
 var streak = 0;
+var longest_streak = 0;
 
 function showHint() {
     document.getElementById("hint_display").innerHTML = (hint_list[num_gen]);
+}
+
+function checkStreak(){
+    if(streak>=longest_streak){
+        longest_streak=streak;
+    }
 }
 
 function create_template(word_array) {
@@ -81,7 +88,7 @@ function display_game() {
     document.getElementById("wrong_guesses").innerHTML = "";
     document.getElementById("hint_display").innerHTML = "";
     document.getElementById("topic").innerHTML = "";
-    document.getElementById("streak").innerHTML = streak;
+    document.getElementById("streak").innerHTML = longest_streak;
 
     gameOn = true;
 
@@ -136,6 +143,7 @@ function spell_check(wa, k) {//declares function with parameter key
             }
             if (correct_letter == true && gameOn) {
                 keys_list.splice(keys_list.indexOf(k), 1);
+                ending_screen();
             }
             else if (correct_letter == false && gameOn) {
                 const s = document.createElement("span");
@@ -146,11 +154,11 @@ function spell_check(wa, k) {//declares function with parameter key
                 num_tries -= 1;
                 document.getElementById("attempts").innerHTML = ("" + num_tries);
                 keys_list.splice(keys_list.indexOf(k), 1);
+                ending_screen();
             }
             document.getElementById("display-img").setAttribute('src', image_list[num_tries]);
         }
     }
-    ending_screen();
 }
 
 function ending_screen() {
@@ -173,5 +181,6 @@ function ending_screen() {
         gameOn = false;
         streak++;
     }
+    checkStreak();
     console.log(answer_list.toString());
 }
