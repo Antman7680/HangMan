@@ -21,38 +21,40 @@
 </head>
 
 <body id="body">
-    <header><h1>HangMan</h1></header>
+    <header>
+        <h1>HangMan</h1>
+    </header>
     <nav>
-        <p id="streaks">Longest Streak: <span id="streak"></span> Current Streak: <span id="cstreak"></span></p>
+        <p id="streaks">Longest Streak: <span id="lstreak"></span> Current Streak: <span id="cstreak"></span></p>
         <p id>Attempts: <span id="attempts"></span></p>
         <button id="start" onclick="display_game()">Play Game</button>
         <button id="showHint" onclick="uLikeHint()">Display Hint:<span id="isHintOn">On</span></button>
         <div id="hint_display"></div>
     </nav>
-            <tr>
-                <td><img id="display-img"></td>
-                <td>
-                    <div id="guesses"></div>
-                    <table>
-                        <tr>
-                            <td>
-                                <div id="topic"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div id="correct_guesses"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div id="wrong_guesses"></div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+    <tr>
+        <td><img id="display-img"></td>
+        <td>
+            <div id="guesses"></div>
+            <table>
+                <tr>
+                    <td>
+                        <div id="topic"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="correct_guesses"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="wrong_guesses"></div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    </table>
 
     <script src="hangmanjs.js">
         // var image_list=['hangman_7.png','hangman_6.png','hangman_5.png','hangman_4.png','hangman_3.png','hangman_2.png','hangman_1.png'];//list of images
