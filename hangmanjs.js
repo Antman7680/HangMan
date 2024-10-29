@@ -13,19 +13,19 @@ var school_subject_topic = ['School Subject', 'School Subject', 'School Subject'
 var school_subject_hint = ['Numbers', 'Writing', 'Past events', 'Experiments', 'Working Out', 'Bob Ross', 'Instruments','Acting','A mix between working out and music','Learning about the human body'];
 
 var popular_brands_list = ['nike', 'apple', 'mircosoft', 'adidas', 'sony', 'disney', 'under_armour'];
-var popular_brands_topic = ['Popular Brands', 'Popular Brands', 'Popular Brands', 'Popular Brands', 'Popular Brands', 'Popular Brands', 'Popular Brands'];
+var popular_brands_topic = ['Shoe Brands', 'Tech Brands', 'Tech Brands','Shoe Brands', 'Tech Brands', 'Entertainment Brands', 'Clothing Brands'];
 var popular_brands_hint = ['Just Do It!', 'Think Different', 'We believe in what people make possible', 'Impossible Is Nothing', 'Make. Believe', 'The Happiest Place on Earth', '...Makes You Better']
 
-var cartoons_list = ['tom_and_jerry', 'teenage_mutant_ninja_turtles', 'spongebob_squarepants', 'gravity_falls', 'transformers', 'voltron'];
-var cartoons_topic = ['Cartoons', 'Cartoons', 'Cartoons', 'Cartoons', 'Cartoons', 'Cartoons'];
-var cartoon_hint = ['Cat and mouse', '... In a Half Shell', 'Ohh Who lives in a Pineapple Under the Sea', 'Bill is watching', 'Autobots Roll Out', 'Land Team, form legs... Sea Team, form torso and arms... Air Team, form head!'];
+var cartoons_list = ['tom_and_jerry', 'teenage_mutant_ninja_turtles', 'spongebob_squarepants', 'gravity_falls', 'transformers', 'voltron','avatar_the_last_airbender'];
+var cartoons_topic = ['Cartoons', 'Cartoons', 'Cartoons', 'Cartoons', 'Cartoons', 'Cartoons','Cartoons'];
+var cartoon_hint = ['Cat and mouse', '... In a Half Shell', 'Ohh Who lives in a Pineapple Under the Sea', 'Bill is watching', 'Autobots Roll Out', 'Land Team, form legs... Sea Team, form torso and arms... Air Team, form head!','Long ago, the four nations lived together in harmony'];
 
 var video_games = ['the_last_of_us', 'god_of_war', 'pokemon', 'mario', 'halo', 'zelda', 'call_of_duty', 'minecraft','fortnite','metal_gear'];
 var video_games_topic = ['Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games','Video Games','Video Games'];
 var video_games_hint = ['When your lost look towards the light. Believe in the Fireflies', 'Boyy!', 'Gotta Catch Them All', 'It\'s a me ...', 'I need a weapon', 'It is dangerous out there. Here take this.', 'Mason. The Numbers! It\'s the NUMBERS MASON!', 'I, Am STEVE','#1 Victory Royale','Snake? Snake? SNAKE!?'];
 
 var movie_list = ['the_truman_show', 'whiplash', 'alien', 'lord_of_the_rings','oppenheimer','scott_pilgrim_versus_the_world','star_wars','john_wick'];
-var movie_topic = ['Movies', 'Movies', 'Movies', 'Movies','Movie','Movie','Movie','Movie'];
+var movie_topic = ['Movies', 'Movies', 'Movies', 'Movies', 'Movie Franchise', 'Movie', 'Movie Franchise','Movie Franchise'];
 var movie_hints = ['In case I don\'t see you. Good Afternoon, Good Evening, and Good Night', 'Are you RUSHING, Or ARE YOU DRAGGING?', 'No one can hear you scream in space', 'One ring to rule them all', 'Now I have become death', 'We are Sex-Bob-Omb, 1! 2! 3! 4!', 'It\'s a trap!','Do you want to start a war. Or do you just want to get me a gun.'];
 
 var hard_words = ['accommodate','knight','stress'];
@@ -51,8 +51,28 @@ var longest_streak = 0;
 
 gameOn = false;
 
+var hint_on=true;
+
 function showHint() {
-    document.getElementById("hint_display").innerHTML = (hint_list[num_gen]);
+    if (num_tries == (6 / 2&&hint_on)){
+        document.getElementById("hint_display").innerHTML = (hint_list[num_gen]);
+    }
+}
+
+function uLikeHint(){
+    if(hint_on){
+        hint_on=false;
+    }
+    else{
+        hint_on=true;
+    }
+    if (hint_on) {
+        document.getElementById("isHintOn").innerHTML = "On";
+    }
+    else {
+        document.getElementById("isHintOn").innerHTML = "Off";
+    }
+    console.log(hint_on);
 }
 
 function checkStreak() {
@@ -78,13 +98,27 @@ function genWord(){
         }
         words_generated[words_generated.length] = num_gen;
     }
-    if (words_generated.length >= words_list.length){
+    if (words_generated.length >= (words_list.length)/2){
         words_generated.splice(0, 1);
     }
     word = words_list[num_gen];//This pulls a word from the list using the number we generated.
     word_array = word.split("");
-    console.log(word+" "+hint_list[num_gen]+ " "+round+" "+num_gen);
-    console.log("These are the numbers called before "+words_generated.toString());
+    console.log(word);
+}
+
+function display_wordF(){
+    display_word = "";
+    for (let i = 0; i < word_array.length; i++) {
+        if (word_array[i] == "_") {
+            display_word += " ";
+        }
+        else if (i == 0 || word_array[i - 1] == "_") {
+            display_word += word_array[i].toUpperCase();
+        }
+        else {
+            display_word += word_array[i].toLowerCase();
+        }
+    }
 }
 
 function create_template(word_array) {
@@ -129,7 +163,6 @@ function display_game() {
     round++;
     answer_list = [];
     keys_list = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
-    display_word = "";
 
     document.getElementById("guesses").innerHTML = "";
     document.getElementById("wrong_guesses").innerHTML = "";
@@ -146,22 +179,10 @@ function display_game() {
 
     document.getElementById("display-img").setAttribute("style", "visibility:visible;");
     document.getElementById("start").setAttribute("style", "visibility:hidden;");
-
+    document.getElementById("showHint").setAttribute("style", "visibility:hidden;");
 
     genWord();
     create_template(word_array);
-
-    for (let i = 0; i < word_array.length; i++) {
-        if (word_array[i] == "_") {
-            display_word += " ";
-        }
-        else if(i==0||word_array[i-1]=="_"){
-            display_word += word_array[i].toUpperCase();
-        }
-        else {
-            display_word += word_array[i].toLowerCase();
-        }
-    }
 
     document.getElementById("topic").innerHTML = (topic_list[num_gen]);//Displays the topic at the span tag with the id topic
 }
@@ -170,19 +191,15 @@ var body = document.getElementById("body");//Creates a var for the body
 body.addEventListener("keyup", (e) => {//Creates an event listener that listens for when the user presses a key and it goes up
     key = e.key;
     if (key == 'Enter' || key == ' ') {
-        console.log("You pressed enter");
         if(!gameOn){
             display_game();
         }
     }
     spell_check(word_array, key.toLowerCase());//calls function when listener goes off
-})
+});
 
 function spell_check(wa, k) {//declares function with parameter key
     let index = 0;
-    if (num_tries <= (6 / 2)) {
-        showHint();
-    }
     for (let i = 0; i < keys_list.length; i++) {
         if (k == keys_list[i]) {
             let correct_letter = false;
@@ -193,11 +210,7 @@ function spell_check(wa, k) {//declares function with parameter key
                 }
                 index++;
             }
-            if (correct_letter == true && gameOn) {
-                keys_list.splice(keys_list.indexOf(k), 1);
-                ending_screen();
-            }
-            else if (correct_letter == false && gameOn) {
+            if (correct_letter == false && gameOn) {
                 const s = document.createElement("span");
                 const text = document.createTextNode(k.toUpperCase() + " ");
                 s.appendChild(text);
@@ -205,15 +218,18 @@ function spell_check(wa, k) {//declares function with parameter key
 
                 num_tries -= 1;
                 document.getElementById("attempts").innerHTML = ("" + num_tries);
-                keys_list.splice(keys_list.indexOf(k), 1);
-                ending_screen();
             }
-            document.getElementById("display-img").setAttribute('src', image_list[num_tries]);
         }
     }
+    document.getElementById("display-img").setAttribute('src', image_list[num_tries]);
+    keys_list.splice(keys_list.indexOf(k), 1);
+    ending_screen();
+    showHint();
 }
 
 function ending_screen() {
+    display_wordF();
+
     let index = 0;
     while (index < word_array.length && gameOn) {
         let answer = document.getElementById(index).innerHTML;
@@ -222,16 +238,16 @@ function ending_screen() {
     }
     if (num_tries == 0) {//if function
         document.getElementById("guesses").innerHTML = ("Sorry try again the word was " + display_word);//prints the word and to try again once the user runs out of attempts
-        document.getElementById("start").setAttribute("style", "visibility:visible;");
         gameOn = false;
         streak = 0;
     }
     if ((word_array.toString() === answer_list.toString())) {
-        document.getElementById("start").setAttribute("style", "visibility:visible;");
         document.getElementById("correct_guesses").innerHTML = ('You got the word');
         document.getElementById("wrong_guesses").innerHTML = ('The word was ' + display_word);
         gameOn = false;
         streak++;
     }
+    document.getElementById("start").setAttribute("style", "visibility:visible;");
+    document.getElementById("showHint").setAttribute("style", "visibility:visible;");
     checkStreak();
 }
