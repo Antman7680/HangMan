@@ -1,45 +1,52 @@
 const image_list = ['hangman_7.png', 'hangman_6.png', 'hangman_5.png', 'hangman_4.png', 'hangman_3.png', 'hangman_2.png', 'hangman_1.png'];//list of images
 
-var fruit_list = ['apple', 'orange', 'mango', 'watermelon', 'cherry', 'banana', 'strawberry', 'dragon_fruit', 'blue_berry', 'grape', 'pineapple', 'lemon'];//List of fruits
-var fruit_topic = ['Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruits', 'Fruits'];//List of topics
-var fruit_hint = ['The fruit is red', 'The fruit is named after a color', 'The fruit is commonly red and green', 'It is big and green', 'The fruit is red small and sweet', 'It is yellow and can be used to make delicious bread', 'A small red berry', 'Named after a mythical creature', 'Small either blue or purple and makes a great pie.', 'Very small and commonly red or green and makes a great soda or juice', 'The main reason America made Hawaii a state', 'Yellow and used to make a sour drink'];//Hint for fruit generated
+var fruit_list = ['apple', 'orange', 'mango', 'watermelon', 'cherry', 'banana', 'strawberry', 'dragon_fruit', 'blue_berry', 'grape', 'pineapple', 'lemon','peach'];//List of fruits
+var fruit_topic = ['Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruit', 'Fruits', 'Fruits','Fruits'];//List of topics
+var fruit_hint = ['The fruit is red', 'The fruit is named after a color', 'The fruit is commonly red and green', 'It is big and green', 'The fruit is red small and sweet', 'It is yellow and can be used to make delicious bread', 'A small red berry', 'Named after a mythical creature', 'Small either blue or purple and makes a great pie.', 'Very small and commonly red or green and makes a great soda or juice', 'The main reason America made Hawaii a state', 'Yellow and used to make a sour drink','Sweet with shades of orange and red while being somewhat hairy'];//Hint for fruit generated
 
-var super_hero_list = ['the_flash', 'iron_man', 'spider-man', 'batman', 'superman', 'captain_america', 'thor', 'green_lantern', 'wolverine', 'wonder_woman', 'black_widow', 'aquaman', 'green_arrow', 'hawkeye'];//Super hero list
-var super_hero_topic = ['DC Super Heros', 'Marvel Super Heros', 'Marvel Super Heros', 'DC Super Hero', 'DC Super Hero', 'Marvel Super Hero', 'Marvel Super Heros', 'DC Super Heros', 'Marvel Super Hero', 'DC Super Hero', 'Marvel Super Hero', 'DC Super Heros', 'DC Super Heros', 'Marvel Super Hero'];//Topic for super hero
-var super_hero_hint = ['He is very fast', 'The tin man', 'Friendly neighborhood', 'I am the vengeance! I am the Night! I am ...', 'The Last Son of Krypton', 'I can do this all day', 'God of Thunder', 'In Brightest Day, In Blackest Night. No Evil Should Escape my Sight. Beware my powers!', 'Known for his adamantium claws and regenerative healing abilities', 'Princess of Themyscira', 'Named after a Spider with a red hour glass', 'Can talk to fish', 'You failed this city', 'Never misses a shot'];//Hint for super hero generated
+var super_hero_list = ['the_flash', 'iron_man', 'spider-man', 'batman', 'superman', 'captain_america', 'thor', 'green_lantern', 'wolverine', 'wonder_woman', 'black_widow', 'aquaman', 'green_arrow', 'hawkeye','daredevil','the_incredible_hulk'];//Super hero list
+var super_hero_topic = ['DC Super Heros', 'Marvel Super Heros', 'Marvel Super Heros', 'DC Super Hero', 'DC Super Hero', 'Marvel Super Hero', 'Marvel Super Heros', 'DC Super Heros', 'Marvel Super Hero', 'DC Super Hero', 'Marvel Super Hero', 'DC Super Heros', 'DC Super Heros', 'Marvel Super Hero','Marvel Super Hero','Marvel Super Hero'];//Topic for super hero
+var super_hero_hint = ['He is very fast', 'The tin man', 'Friendly neighborhood', 'I am the vengeance! I am the Night! I am ...', 'The Last Son of Krypton', 'I can do this all day', 'God of Thunder', 'In Brightest Day, In Blackest Night. No Evil Should Escape my Sight. Beware my powers!', 'Known for his adamantium claws and regenerative healing abilities', 'Princess of Themyscira', 'Named after a Spider with a red hour glass', 'Can talk to fish', 'You failed this city', 'Never misses a shot','The man without fear','While the character is green he was original gray'];//Hint for super hero generated
 
-var school_subject_list = ['math', 'english', 'history', 'science', 'gym', 'art', 'music', 'drama', 'dance', 'health'];
-var school_subject_topic = ['School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject'];
-var school_subject_hint = ['Numbers', 'Writing', 'Past events', 'Experiments', 'Working Out', 'Bob Ross', 'Instruments', 'Acting', 'A mix between working out and music', 'Learning about the human body'];
+var school_subject_list = ['math', 'english', 'history', 'science', 'gym', 'art', 'music', 'drama', 'dance', 'health','algebra','physics'];
+var school_subject_topic = ['School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject', 'School Subject','School Subject','School Subject'];
+var school_subject_hint = ['Numbers', 'Writing', 'Past events', 'Experiments', 'Working Out', 'Bob Ross', 'Instruments', 'Acting', 'A mix between working out and music', 'Learning about the human body','Find x','An object in motion stays in motion'];
 
-var popular_brands_list = ['nike', 'apple', 'mircosoft', 'adidas', 'sony', 'disney', 'under_armour'];
-var popular_brands_topic = ['Shoe Brands', 'Tech Brands', 'Tech Brands', 'Shoe Brands', 'Tech Brands', 'Entertainment Brands', 'Clothing Brands'];
-var popular_brands_hint = ['Just Do It!', 'Think Different', 'We believe in what people make possible', 'Impossible Is Nothing', 'Make. Believe', 'The Happiest Place on Earth', '...Makes You Better']
+var popular_brands_list = ['nike', 'apple', 'mircosoft', 'adidas', 'sony', 'disney', 'under_armour','universal'];
+var popular_brands_topic = ['Shoe Brands', 'Tech Brands', 'Tech Brands', 'Shoe Brands', 'Tech Brands', 'Entertainment Brands', 'Clothing Brands','Entertainment Brands'];
+var popular_brands_hint = ['Just Do It!', 'Think Different', 'We believe in what people make possible', 'Impossible Is Nothing', 'Make. Believe', 'The Happiest Place on Earth', '...Makes You Better', 'It\'s More Than Magic.It\'s Real'];
 
-var cartoons_list = ['tom_and_jerry', 'teenage_mutant_ninja_turtles', 'spongebob_squarepants', 'gravity_falls', 'transformers', 'voltron', 'avatar_the_last_airbender'];
-var cartoons_topic = ['Cartoons', 'Cartoons', 'Cartoons', 'Cartoons', 'Cartoons', 'Cartoons', 'Cartoons'];
-var cartoon_hint = ['Cat and mouse', '... In a Half Shell', 'Ohh Who lives in a Pineapple Under the Sea', 'Bill is watching', 'Autobots Roll Out', 'Land Team, form legs... Sea Team, form torso and arms... Air Team, form head!', 'Long ago, the four nations lived together in harmony'];
+var cartoons_list = ['tom_and_jerry', 'teenage_mutant_ninja_turtles', 'spongebob_squarepants', 'gravity_falls', 'transformers', 'voltron', 'avatar_the_last_airbender', 'randy_cunningham_ninth_grade_ninja','flintstones'];
+var cartoons_topic = ['Cartoons', 'Cartoons', 'Cartoons', 'Cartoons', 'Cartoons', 'Cartoons', 'Cartoons','Cartoons','Cartoons'];
+var cartoon_hint = ['Cat and mouse', '... In a Half Shell', 'Ohh Who lives in a Pineapple Under the Sea', 'Bill is watching', 'Autobots Roll Out', 'Land Team, form legs... Sea Team, form torso and arms... Air Team, form head!', 'Long ago, the four nations lived together in harmony', 'Come on, baby, drop some secret ninja knowledge on me', 'yabba dabba doo!'];
 
-var video_games = ['the_last_of_us', 'god_of_war', 'pokemon', 'mario', 'halo', 'zelda', 'call_of_duty', 'minecraft', 'fortnite', 'metal_gear'];
-var video_games_topic = ['Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games'];
-var video_games_hint = ['When your lost look towards the light. Believe in the Fireflies', 'Boyy!', 'Gotta Catch Them All', 'It\'s a me ...', 'I need a weapon', 'It is dangerous out there. Here take this.', 'Mason. The Numbers! It\'s the NUMBERS MASON!', 'I, Am STEVE', '#1 Victory Royale', 'Snake? Snake? SNAKE!?'];
+var video_games = ['the_last_of_us', 'god_of_war', 'pokemon', 'super_mario', 'halo', 'zelda', 'call_of_duty', 'minecraft', 'fortnite', 'metal_gear','super_smash_bros','mario_kart','uncharted'];
+var video_games_topic = ['Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games', 'Video Games','Video Games','Video Games','Video Games'];
+var video_games_hint = ['When your lost look towards the light. Believe in the Fireflies', 'Boyy!', 'Gotta Catch Them All', 'It\'s a me ...', 'I need a weapon', 'It is dangerous out there. Here take this.', 'Mason. The Numbers! It\'s the NUMBERS MASON!', 'I, Am STEVE', '#1 Victory Royale', 'Snake? Snake? SNAKE!?','A super clash of character','Blue Shell','Treasure Hunting'];
 
-var movie_list = ['the_truman_show', 'whiplash', 'alien', 'lord_of_the_rings', 'oppenheimer', 'scott_pilgrim_versus_the_world', 'star_wars', 'john_wick'];
-var movie_topic = ['Movies', 'Movies', 'Movies', 'Movies', 'Movie Franchise', 'Movie', 'Movie Franchise', 'Movie Franchise'];
-var movie_hints = ['In case I don\'t see you. Good Afternoon, Good Evening, and Good Night', 'Are you RUSHING, Or ARE YOU DRAGGING?', 'No one can hear you scream in space', 'One ring to rule them all', 'Now I have become death', 'We are Sex-Bob-Omb, 1! 2! 3! 4!', 'It\'s a trap!', 'Do you want to start a war. Or do you just want to get me a gun.'];
+var movie_list = ['the_truman_show', 'whiplash', 'aliens', 'lord_of_the_rings', 'oppenheimer', 'scott_pilgrim_versus_the_world', 'star_wars', 'john_wick','moneyball'];
+var movie_topic = ['Movies', 'Movies', 'Movie Franchise', 'Movie Franchise', 'Movies', 'Movies', 'Movie Franchise', 'Movie Franchise','Movies'];
+var movie_hints = ['In case I don\'t see you. Good Afternoon, Good Evening, and Good Night', 'Are you RUSHING, Or ARE YOU DRAGGING?', 'No one can hear you scream in space', 'One ring to rule them all', 'Now I have become death', 'We are Sex-Bob-Omb, 1! 2! 3! 4!', 'It\'s a trap!', 'Do you want to start a war. Or do you just want to get me a gun.','I hate losing more than I want to win'];
 
-var hard_words = ['accommodate', 'knight', 'stress'];
-var hard_topic = ['Difficult to spell', 'Single Vowel Words', 'Single Vowel Words'];
-var hard_hint = ['Provide lodging or sufficient space for.', 'A (answer) in shining armour', 'A state of worry or mental tension'];
+var hard_words = ['accommodate', 'knight', 'stress', 'blind', 'onomatopoeia','supercalifragilisticexpialidocious'];
+var hard_topic = ['Difficult to spell', 'Single Vowel Words', 'Single Vowel Words', 'Single Vowel Words', 'Hard to spell','Extremely Difficult to Spell'];
+var hard_hint = ['Provide lodging or sufficient space for.', 'A (answer) in shining armour', 'A state of worry or mental tension', 'The inability see','Referring to words that are similar to sounds or noises','Good or wonderful'];
 
 var colored_list = ['black', 'red', 'blue', 'yellow', 'green', 'orange', 'purple', 'white'];
 var colored_topic = ['Colors', 'Colors', 'Colors', 'Colors', 'Colors', 'Colors', 'Colors', 'Colors'];
 var colored_hints = ['Absence of all colors', 'Primary color', 'Primary color', 'Primary color', 'Secondary color', 'Secondary color', 'Secondary color', 'Presence of all colors'];
 
+var kitchen_list = ['knife','fork','spoon','stove','microwave','air_fryer','refrigerator'];
+var kitchen_topic = ['Items found in the kitchen', 'Items found in the kitchen', 'Items found in the kitchen', 'Items found in the kitchen', 'Items found in the kitchen', 'Items found in the kitchen', 'Items found in the kitchen'];
+var kitchen_hints = ['Sharp object used to cut food','Used to pick up solid food easily','Item used to pick liquid food easily','Used to cook food','Used to reheat food','Used to cook food in a healthy way','Used to keep food cold and fresh'];
 
-const words_list = fruit_list.concat(super_hero_list, school_subject_list, popular_brands_list, cartoons_list, video_games, movie_list, hard_words, colored_list);//Combines the list
-const topic_list = fruit_topic.concat(super_hero_topic, school_subject_topic, popular_brands_topic, cartoons_topic, video_games_topic, movie_topic, hard_topic, colored_topic);//Combines the topic list
-const hint_list = fruit_hint.concat(super_hero_hint, school_subject_hint, popular_brands_hint, cartoon_hint, video_games_hint, movie_hints, hard_hint, colored_hints);//Combines the hint list
+var everyday_house_list = ['sofa','television','carpet','bed','dresser'];
+var everyday_house_topic = ['Found in living room','Found in living room','Found in house','Found in bedroom','Found in bedroom'];
+var everyday_house_hints = ['Used to relax and sit','Used to watch entertainment','A type of flooring','Used to lay down and sleep','Used to store clothes'];
+
+const words_list = fruit_list.concat(super_hero_list, school_subject_list, popular_brands_list, cartoons_list, video_games, movie_list, hard_words, colored_list,kitchen_list,everyday_house_list);//Combines the list
+const topic_list = fruit_topic.concat(super_hero_topic, school_subject_topic, popular_brands_topic, cartoons_topic, video_games_topic, movie_topic, hard_topic, colored_topic,kitchen_topic,everyday_house_topic);//Combines the topic list
+const hint_list = fruit_hint.concat(super_hero_hint, school_subject_hint, popular_brands_hint, cartoon_hint, video_games_hint, movie_hints, hard_hint, colored_hints,kitchen_hints,everyday_house_hints);//Combines the hint list
 
 var keys_list = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
 let words_generated = [];
@@ -102,9 +109,10 @@ function genWord() {
         words_generated.splice(0, 1);
     }
     word = words_list[num_gen];//This pulls a word from the list using the number we generated.
+    word.toLowerCase();
     word_array = word.split("");
     document.getElementById("topic").innerHTML = (topic_list[num_gen]);//Displays the topic at the span tag with the id topic
-    console.log(word);
+    console.log(word+' '+topic_list[num_gen]+' '+hint_list[num_gen]+' '+num_gen);
 }
 
 function display_wordF() {
@@ -198,7 +206,6 @@ body.addEventListener("keyup", (e) => {//Creates an event listener that listens 
     else if(gameOn){
         spell_check(word_array, key.toLowerCase());//calls function when listener goes off
     }
-    console.log(key.toLowerCase());
 });
 
 function spell_check(wa, k) {//declares function with parameter key
@@ -210,6 +217,7 @@ function spell_check(wa, k) {//declares function with parameter key
                 correct_letter = true;
             }
         }
+
         if (correct_letter == false && gameOn){
             const s = document.createElement("span");
             const text = document.createTextNode(k.toUpperCase() + " ");
@@ -219,9 +227,9 @@ function spell_check(wa, k) {//declares function with parameter key
             num_tries --;
             document.getElementById("attempts").innerHTML = ("" + num_tries);
         }
+        keys_list.splice(keys_list.indexOf(k), 1);
     }
     document.getElementById("display-img").setAttribute('src', image_list[num_tries]);
-    keys_list.splice(keys_list.indexOf(k), 1);
     showHint();
     ending_screen();
 }
