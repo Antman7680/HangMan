@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hangman 1.2</title>
+    <title>Hangman 1.1</title>
     <!-- <link rel="stylesheet" href="hangman_styling.css"> -->
     <style>
         img {
@@ -31,31 +31,33 @@
         <button id="showHint" onclick="uLikeHint()">Display Hint:<span id="isHintOn">On</span></button>
         <div id="hint_display"></div>
     </nav>
-    <tr>
-        <td><img id="display-img"></td>
-        <td>
-            <div id="guesses"></div>
-            <table>
-                <tr>
-                    <td>
-                        <div id="topic"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="correct_guesses"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="wrong_guesses"></div>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    </table>
-
+    <main>
+        <table>
+            <tr>
+                <td><img id="display-img"></td>
+                <td>
+                    <div id="guesses"></div>
+                    <table>
+                        <tr>
+                            <td>
+                                <div id="topic"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="correct_guesses"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="wrong_guesses"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </main>
     <script src="hangmanjs.js">
         // var image_list=['hangman_7.png','hangman_6.png','hangman_5.png','hangman_4.png','hangman_3.png','hangman_2.png','hangman_1.png'];//list of images
         // document.getElementById("display-img").setAttribute('src',(image_list[attempts]));//prints image on screen
