@@ -64,16 +64,31 @@ function showTopic() {
 }
 
 function genWord() {
-    num_gen = Math.floor(Math.random() * (wordList.length));//This right here generates a number between 0-and length of the list
+    let num_genT = Math.floor(Math.random() * (wordList.length));//This right here generates a number between 0-and length of the list
+    let item = wordList[num_genT];
+
+    topic = item.topic;
+    words = item.words_Array;
+
+    let num_gen = Math.floor(Math.random() * (words.length));
+    word = words[num_gen].word;
+
     let word_used = false;
+
     while (!word_used) {
-        if (words_generated.indexOf(num_gen) !== -1) {
-            num_gen = Math.floor(Math.random() * (wordList.length));
-        } else {
+        if (words_generated.indexOf(word) === -1){
             word_used = true;
         }
+        else{
+            num_genT = Math.floor(Math.random() * (wordList.length));//This right here generates a number between 0-and length of the list
+            item = wordList[num_genT];
+            topic = item.topic;
+            words = item.words_Array;
+            num_gen = Math.floor(Math.random() * (words.length));
+            word = words[num_gen].word;
+        }
     }
-    words_generated.push(num_gen);
+    words_generated.push(word);
 
     // Ensure we don't have too many used words
     if (words_generated.length >= (wordList.length) / 2) {
@@ -81,12 +96,9 @@ function genWord() {
     }
 
     // Accessing the word, hint, and topic
-    let item = wordList[num_gen];
-    word = item.word.toLowerCase(); // Ensure it's lowercase
     word_array = word.split(""); // Split the word into an array of characters
-    topic = item.topic;
-    hint = item.hint;
-    number = item.number;
+    hint = words[num_gen].hint;
+    number = words[num_gen].number;
 
     console.log(word + " " + topic + " " + hint + " " + number);
 }
@@ -121,7 +133,7 @@ function create_template(word_array) {
             document.getElementById("correct_guesses").appendChild(s).setAttribute('id', id);
             id++;
         }
-        else if (char_list.indexOf(word_array[id])===-1) {
+        else if (char_list.indexOf(word_array[id]) === -1) {
             const s = document.createElement("span");
             const text = document.createTextNode(word_array[id]);
             s.appendChild(text);
