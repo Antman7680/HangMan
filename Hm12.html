@@ -5,28 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hangman 1.1</title>
-    <!-- <link rel="stylesheet" href="hangman_styling.css"> -->
+    <link rel="stylesheet" href="hangman_styling.css">
     <style>
-        img {
-            width: 30.5em;
-            height: 25em;
-            border: none;
-            visibility: hidden;
-        }
-
-        #start {
-            visibility: visible;
-        }
     </style>
 </head>
 
 <body id="body">
     <header>
-        <h1>HangMan</h1>
+        <h1>Hangman</h1>
     </header>
     <nav>
         <p id="streaks">Longest Streak: <span id="lstreak"></span> Current Streak: <span id="cstreak"></span></p>
-        <p id>Attempts: <span id="attempts"></span></p>
+        <p>Attempts: <span id="attempts"></span></p>
         <button id="start" onclick="display_game()">Play Game</button>
         <button id="showHint" onclick="uLikeHint()">Display Hint:<span id="isHintOn">On</span></button>
         <div id="hint_display"></div>
