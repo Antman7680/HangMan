@@ -1,3 +1,4 @@
+
 const image_list = ['hangman_7.png', 'hangman_6.png', 'hangman_5.png', 'hangman_4.png', 'hangman_3.png', 'hangman_2.png', 'hangman_1.png'];//list of images
 
 let char_list = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
@@ -29,6 +30,17 @@ var longest_streak = 0;
 var gameOn = false;
 
 var hint_on = true;
+
+var wordListLength=0;
+
+function wordsLength(){
+    let wlist;
+    for (let i = 0; i < wordList.length;i++){
+        wlist = wordList[i].words_Array;
+        wordListLength+=wlist.length;
+    }
+    console.log(wordListLength);
+}
 
 function checkStreak() {
     if (streak >= longest_streak) {
@@ -64,6 +76,8 @@ function showTopic() {
 }
 
 function genWord() {
+    wordsLength();
+
     let num_genT = Math.floor(Math.random() * (wordList.length));//This right here generates a number between 0-and length of the list
     let item = wordList[num_genT];
 
@@ -76,10 +90,10 @@ function genWord() {
     let word_used = false;
 
     while (!word_used) {
-        if (words_generated.indexOf(word) === -1){
+        if (words_generated.indexOf(word) === -1) {
             word_used = true;
         }
-        else{
+        else {
             num_genT = Math.floor(Math.random() * (wordList.length));//This right here generates a number between 0-and length of the list
             item = wordList[num_genT];
             topic = item.topic;
@@ -91,16 +105,15 @@ function genWord() {
     words_generated.push(word);
 
     // Ensure we don't have too many used words
-    if (words_generated.length >= (wordList.length) / 2) {
+    if (words_generated.length >= (wordListLength) / 2) {
         words_generated.splice(0, 1);
     }
 
     // Accessing the word, hint, and topic
     word_array = word.split(""); // Split the word into an array of characters
     hint = words[num_gen].hint;
-    number = words[num_gen].number;
 
-    console.log(word + " " + topic + " " + hint + " " + number);
+    console.log(word + " " + topic + " " + hint);
 }
 
 function display_wordF() {
